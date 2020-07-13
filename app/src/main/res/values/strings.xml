@@ -3,4 +3,9 @@
 
     <!--    Splash Screen Text-->
     <string name="splash_text">Tracking\nSystem</string>
+    <string name="email_hint_login">Email</string>
+    <string name="password_hint_login">Password</string>
+    <string name="login_button_text_login">Login</string>
+    <string name="signup_link_login">Don\'t have an account? Signup</string>
+    <string name="forgot_password_link_login">Forgot Password?</string>
 </resources>
