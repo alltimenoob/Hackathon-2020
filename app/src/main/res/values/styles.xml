@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
@@ -12,6 +12,7 @@
         <item name="android:textSize">40sp</item>
         <item name="android:textColor">@color/splash_color</item>
         <item name="android:textAlignment">center</item>
+        <item name="android:lineHeight" tools:targetApi="p">25dp</item>
     </style>
 
 </resources>
