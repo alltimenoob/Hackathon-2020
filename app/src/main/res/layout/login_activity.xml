@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login"
+        android:text="@string/login_title_text"
 
         style="@style/title_text"
         android:layout_gravity="center_horizontal"
@@ -46,13 +46,15 @@
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
         android:layout_marginTop="20dp"
+
+        app:passwordToggleEnabled="true"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/password_login"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:inputType="textEmailAddress"
+            android:inputType="textPassword"
 
             android:hint="@string/password_hint_login"
             />
