@@ -3,6 +3,8 @@
 
     <!--    Splash Screen Text-->
     <string name="splash_text">Tracking\nSystem</string>
+
+    <!--    Login Screen-->
     <string name="email_hint_login">Email</string>
     <string name="password_hint_login">Password</string>
     <string name="login_button_text_login">Login</string>
@@ -10,15 +12,23 @@
     <string name="forgot_password_link_login">Forgot Password?</string>
     <string name="login_title_text">Login</string>
 
-
+    <!--    Signup Screen-->
     <string name="signup_title_text">Signup</string>
     <string name="signup_button_text_signup">Signup</string>
     <string name="login_link_signup">Already have an account? Login</string>
-
     <string name="email_hint_signup">Email</string>
     <string name="password_hint_signup">Password</string>
     <string name="name_hint_signup">Name</string>
 
+    <!--    Send Otp Screen-->
     <string name="email_hint_reset">Email</string>
     <string name="send_otp_button_text_reset">Send Otp</string>
+    <string name="reset_password_title_text">Reset Password</string>
+
+    <!--    Reset Password Screen-->
+    <string name="otp_hint_reset">Otp</string>
+    <string name="password_hint_reset">New Password</string>
+    <string name="reset_password_button_reset">Reset Password</string>
+
+
 </resources>

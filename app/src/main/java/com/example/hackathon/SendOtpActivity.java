@@ -48,8 +48,8 @@ public class SendOtpActivity extends AppCompatActivity {
         {
             Toast.makeText(this,email+"",Toast.LENGTH_SHORT).show();
 
-//            intent = new Intent(this,);
-//            startActivity(intent);
+            intent = new Intent(this,ResetPasswordActivity.class);
+            startActivity(intent);
         }
 
     }
