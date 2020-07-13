@@ -14,6 +14,10 @@ import com.android.volley.Response;
 import com.example.hackathon.handlers.DatabaseHandler;
 import com.google.android.material.textfield.TextInputEditText;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -83,8 +87,17 @@ public class LoginActivity extends AppCompatActivity {
 
             DatabaseHandler databaseHandler = new DatabaseHandler(LoginActivity.this,"http://192.168.0.104/hackathon/Login.php") {
                 @Override
-                public void getResponse(String response) {
-                    Toast.makeText(LoginActivity.this,response,Toast.LENGTH_SHORT).show();
+                public void getResponse(String response) throws JSONException {
+                    JSONObject object = new JSONObject(response);
+
+                    if(object.getString("status").equals("1"))
+                    {
+                        Toast.makeText(LoginActivity.this,"Succ MY",Toast.LENGTH_SHORT).show();
+                    }
+                    else
+                    {
+                        Toast.makeText(LoginActivity.this,"Faile You",Toast.LENGTH_SHORT).show();
+                    }
                 }
             };
 

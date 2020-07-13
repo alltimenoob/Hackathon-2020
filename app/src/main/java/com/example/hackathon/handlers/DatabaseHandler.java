@@ -13,6 +13,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONException;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -29,7 +31,7 @@ public abstract class DatabaseHandler {
         this.Url = url;
     }
 
-    public abstract void getResponse(String response);
+    public abstract void getResponse(String response) throws JSONException;
 
     public void putValues(Map<String,String> map){
          this.map = map;
@@ -41,7 +43,11 @@ public abstract class DatabaseHandler {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        getResponse(response);
+                        try {
+                            getResponse(response);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }, new Response.ErrorListener() {
             @Override
