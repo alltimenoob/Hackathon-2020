@@ -18,4 +18,7 @@
     <string name="email_hint_signup">Email</string>
     <string name="password_hint_signup">Password</string>
     <string name="name_hint_signup">Name</string>
+
+    <string name="email_hint_reset">Email</string>
+    <string name="send_otp_button_text_reset">Send Otp</string>
 </resources>
