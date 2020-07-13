@@ -61,6 +61,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
+        android:id="@+id/forgot_password_link_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/forgot_password_link_login"
@@ -73,6 +74,7 @@
         />
 
     <Button
+        android:id="@+id/login_button_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
@@ -84,6 +86,7 @@
         style="@style/login_button"/>
 
     <TextView
+        android:id="@+id/signup_link_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/signup_link_login"
