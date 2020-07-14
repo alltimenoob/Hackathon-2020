@@ -64,12 +64,12 @@ public abstract class DatabaseHandler {
         request.setRetryPolicy(new RetryPolicy() {
             @Override
             public int getCurrentTimeout() {
-                return 100;
+                return 5000;
             }
 
             @Override
             public int getCurrentRetryCount() {
-                return 100;
+                return 0;
             }
 
             @Override
