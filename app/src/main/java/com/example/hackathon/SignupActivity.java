@@ -9,7 +9,11 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.hackathon.handlers.DatabaseHandler;
 import com.google.android.material.textfield.TextInputEditText;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class SignupActivity extends AppCompatActivity {
 
@@ -18,6 +22,8 @@ public class SignupActivity extends AppCompatActivity {
 
     TextView loginLink;
     String email, password, name;
+
+    String url = "http://192.168.0.104/hackathon/Signup.php";
 
     Intent intent;
 
@@ -33,11 +39,11 @@ public class SignupActivity extends AppCompatActivity {
         signupButton = findViewById(R.id.signup_button_signup);
 
         loginLink = findViewById(R.id.login_link_signup);
-        
+
         loginLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+
                 gotoLogin();
             }
         });
@@ -75,7 +81,27 @@ public class SignupActivity extends AppCompatActivity {
         }
         else
         {
-            Toast.makeText(this,name+" "+email+" "+password,Toast.LENGTH_SHORT).show();
+            databaseOperation();
+            gotoLogin();
         }
     }
+
+         private void databaseOperation()
+         {
+             Map<String ,String> values = new HashMap<>();
+             values.put("email",email);
+             values.put("password",password);
+             values.put("name",name);
+
+             DatabaseHandler databaseHandler = new DatabaseHandler(SignupActivity.this,url) {
+                 @Override
+                 public void getResponse(String response) {
+                     Toast.makeText(SignupActivity.this,response,Toast.LENGTH_SHORT).show();
+                 }
+             };
+
+             databaseHandler.putValues(values);
+
+             databaseHandler.execute();
+         }
 }

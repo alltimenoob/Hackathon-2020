@@ -14,6 +14,10 @@ import com.android.volley.Response;
 import com.example.hackathon.handlers.DatabaseHandler;
 import com.google.android.material.textfield.TextInputEditText;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,6 +28,8 @@ public class LoginActivity extends AppCompatActivity {
 
     TextView forgotPasswordLink, signupLink;
     String email, password;
+
+    String url = "http://192.168.0.104/hackathon/Login.php";
 
     Intent intent;
 
@@ -43,7 +49,6 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 loginOperation();
             }
         });
@@ -77,20 +82,7 @@ public class LoginActivity extends AppCompatActivity {
         }
         else
         {
-            Map<String ,String> values = new HashMap<>();
-            values.put("email",email);
-            values.put("password",password);
-
-            DatabaseHandler databaseHandler = new DatabaseHandler(LoginActivity.this,"http://192.168.0.104/hackathon/Login.php") {
-                @Override
-                public void getResponse(String response) {
-                    Toast.makeText(LoginActivity.this,response,Toast.LENGTH_SHORT).show();
-                }
-            };
-
-            databaseHandler.putValues(values);
-
-            databaseHandler.execute();
+            databaseOperation();
         }
 
     }
@@ -103,6 +95,33 @@ public class LoginActivity extends AppCompatActivity {
     private void gotoForgotPassword() {
         intent = new Intent(this,SendOtpActivity.class);
         startActivity(intent);
+    }
+
+    private void databaseOperation()
+    {
+        Map<String ,String> values = new HashMap<>();
+        values.put("email",email);
+        values.put("password",password);
+
+        DatabaseHandler databaseHandler = new DatabaseHandler(LoginActivity.this,url) {
+            @Override
+            public void getResponse(String response) throws JSONException {
+                JSONObject object = new JSONObject(response);
+
+                if(object.getString("status").equals("1"))
+                {
+                    Toast.makeText(LoginActivity.this,"Login Successful.",Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Toast.makeText(LoginActivity.this,"Invalid Details.",Toast.LENGTH_SHORT).show();
+                }
+            }
+        };
+
+        databaseHandler.putValues(values);
+
+        databaseHandler.execute();
     }
 
 }

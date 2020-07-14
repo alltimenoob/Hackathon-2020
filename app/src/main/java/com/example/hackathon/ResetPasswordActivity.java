@@ -2,24 +2,37 @@ package com.example.hackathon;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.hackathon.handlers.DatabaseHandler;
 import com.google.android.material.textfield.TextInputEditText;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class ResetPasswordActivity extends AppCompatActivity {
 
     TextInputEditText otpEdit, newPasswordEdit;
     Button resetPasswordButton;
 
-    String otp, newPassword;
+    String otp, newPassword, retrivedEmail;
+
+    String url = "http://192.168.0.104/hackathon/ResetPassword.php";
+
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.reset_password_activity);
+
+        intent = getIntent();
+        retrivedEmail = intent.getStringExtra("email");
+
 
         otpEdit = findViewById(R.id.otp_reset);
         newPasswordEdit = findViewById(R.id.password_reset);
@@ -50,7 +63,34 @@ public class ResetPasswordActivity extends AppCompatActivity {
         }
         else
         {
-            Toast.makeText(this,otp+" "+newPassword,Toast.LENGTH_SHORT).show();
+            databaseOperation();
+            gotoLogin();
         }
+    }
+
+    private void databaseOperation()
+    {
+        Map<String, String> values = new HashMap<>();
+        values.put("email", retrivedEmail);
+        values.put("password",newPassword);
+        values.put("otp",otp);
+
+        DatabaseHandler databaseHandler = new DatabaseHandler(ResetPasswordActivity.this, url) {
+            @Override
+            public void getResponse(String response) {
+                Toast.makeText(ResetPasswordActivity.this, response, Toast.LENGTH_SHORT).show();
+            }
+        };
+
+        databaseHandler.putValues(values);
+
+        databaseHandler.execute();
+    }
+
+    private void gotoLogin()
+    {
+        intent = new Intent(this,LoginActivity.class);
+        startActivity(intent);
+        finishAffinity();
     }
 }
