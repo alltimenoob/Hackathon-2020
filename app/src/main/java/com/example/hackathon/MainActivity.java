@@ -1,35 +1,50 @@
 package com.example.hackathon;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
+import android.view.MenuItem;
 
+import com.google.android.material.bottomappbar.BottomAppBar;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
-    Intent intent;
+    public static FragmentManager fragmentManager;
+    public static BottomNavigationView bottom;
+    Fragment fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
 
-        new Handler().postDelayed(new Runnable() {
+        fragmentManager = getSupportFragmentManager();
+        bottom = findViewById(R.id.bottomnav_main);
+
+        bottom.setSelectedItemId(R.id.home_menu_main);
+        fragmentManager.beginTransaction().add(R.id.container_main,new HomeScreenFragment(),null).commit();
+        bottom.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void run() {
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
-                gotoNextActivity();
+                switch (menuItem.getItemId())
+                {
+                    case R.id.home_menu_main :
+                        fragment = new HomeScreenFragment();
+                        break;
 
+                    case R.id.account_menu_main:
+
+                        break;
+
+                }
+                fragmentManager.beginTransaction().replace(R.id.container_main,fragment,null).commit();
+                return true;
             }
-        },500);
-    }
-
-    private void gotoNextActivity()
-    {
-        intent = new Intent(this,LoginActivity.class);
-        startActivity(intent);
-        finish();
+        });
     }
 }

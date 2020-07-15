@@ -1,20 +1,23 @@
-package com.example.hackathon;
+package com.example.hackathon.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.Response;
+import com.example.hackathon.Init;
+import com.example.hackathon.MainActivity;
+import com.example.hackathon.R;
+import com.example.hackathon.Test;
 import com.example.hackathon.handlers.DatabaseHandler;
 import com.google.android.material.textfield.TextInputEditText;
+import com.onesignal.OSPermissionSubscriptionState;
+import com.onesignal.OneSignal;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -29,7 +32,8 @@ public class LoginActivity extends AppCompatActivity {
     TextView forgotPasswordLink, signupLink;
     String email, password;
 
-    String url = "http://192.168.0.104/hackathon/Login.php";
+    String url = Init.ip +"Login.php";
+    String urlIn = Init.ip+"SetToken.php";
 
     Intent intent;
 
@@ -88,12 +92,12 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void gotoSignup() {
-        intent = new Intent(this,SignupActivity.class);
+        intent = new Intent(this, SignupActivity.class);
         startActivity(intent);
     }
 
     private void gotoForgotPassword() {
-        intent = new Intent(this,SendOtpActivity.class);
+        intent = new Intent(this, SendOtpActivity.class);
         startActivity(intent);
     }
 
@@ -110,11 +114,20 @@ public class LoginActivity extends AppCompatActivity {
 
                 if(object.getString("status").equals("1"))
                 {
-                    Toast.makeText(LoginActivity.this,"Login Successful.",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this,object.getString("message"),Toast.LENGTH_SHORT).show();
+
+                    SplashActivity.sharedPrefrencesHandler.setEmail(email);
+                    SplashActivity.sharedPrefrencesHandler.setName(object.getString("name"));
+                    SplashActivity.sharedPrefrencesHandler.setLoggedIn(true);
+
+                    setToken();
+
+                    gotoNextActivity();
+
                 }
                 else
                 {
-                    Toast.makeText(LoginActivity.this,"Invalid Details.",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this,object.getString("message"),Toast.LENGTH_SHORT).show();
                 }
             }
         };
@@ -123,5 +136,35 @@ public class LoginActivity extends AppCompatActivity {
 
         databaseHandler.execute();
     }
+
+    private void gotoNextActivity() {
+        intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    private void setToken()
+    {
+
+        OSPermissionSubscriptionState status = OneSignal.getPermissionSubscriptionState();
+        String userid = status.getSubscriptionStatus().getUserId();
+
+        Map<String ,String> values = new HashMap<>();
+        values.put("email",email);
+        values.put("token",userid);
+
+        DatabaseHandler databaseHandlerIn = new DatabaseHandler(LoginActivity.this,urlIn) {
+            @Override
+            public void getResponse(String response) throws JSONException {
+
+            }
+        };
+
+        databaseHandlerIn.putValues(values);
+        databaseHandlerIn.execute();
+
+    }
+
+
 
 }

@@ -1,15 +1,20 @@
-package com.example.hackathon;
+package com.example.hackathon.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.hackathon.Init;
+import com.example.hackathon.R;
 import com.example.hackathon.handlers.DatabaseHandler;
 import com.google.android.material.textfield.TextInputEditText;
+
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,7 +26,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
 
     String otp, newPassword, retrivedEmail;
 
-    String url = "http://192.168.0.104/hackathon/ResetPassword.php";
+    String url = Init.ip+"ResetPassword.php";
 
     Intent intent;
 
@@ -64,7 +69,6 @@ public class ResetPasswordActivity extends AppCompatActivity {
         else
         {
             databaseOperation();
-            gotoLogin();
         }
     }
 
@@ -77,8 +81,16 @@ public class ResetPasswordActivity extends AppCompatActivity {
 
         DatabaseHandler databaseHandler = new DatabaseHandler(ResetPasswordActivity.this, url) {
             @Override
-            public void getResponse(String response) {
-                Toast.makeText(ResetPasswordActivity.this, response, Toast.LENGTH_SHORT).show();
+            public void getResponse(String response) throws Exception {
+                JSONObject object = new JSONObject(response);
+
+                if(object.getString("status").equals("0")) {
+                    Toast.makeText(ResetPasswordActivity.this, object.getString("message"), Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(ResetPasswordActivity.this, object.getString("message"), Toast.LENGTH_SHORT).show();
+                    gotoLogin();
+                }
             }
         };
 
@@ -89,7 +101,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
 
     private void gotoLogin()
     {
-        intent = new Intent(this,LoginActivity.class);
+        intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
         finishAffinity();
     }

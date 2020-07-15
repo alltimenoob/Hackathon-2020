@@ -1,4 +1,4 @@
-package com.example.hackathon;
+package com.example.hackathon.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,8 +9,13 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.hackathon.Init;
+import com.example.hackathon.R;
 import com.example.hackathon.handlers.DatabaseHandler;
 import com.google.android.material.textfield.TextInputEditText;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,7 +28,7 @@ public class SignupActivity extends AppCompatActivity {
     TextView loginLink;
     String email, password, name;
 
-    String url = "http://192.168.0.104/hackathon/Signup.php";
+    String url = Init.ip+"Signup.php";
 
     Intent intent;
 
@@ -60,7 +65,7 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     private void gotoLogin() {
-        intent = new Intent(this,LoginActivity.class);
+        intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
 
@@ -73,7 +78,6 @@ public class SignupActivity extends AppCompatActivity {
         if (email.isEmpty() || password.isEmpty() || name.isEmpty())
         {
             Toast.makeText(this,"Please Provide All Details !",Toast.LENGTH_SHORT).show();
-
         }
         else if (password.length() < 8)
         {
@@ -95,13 +99,13 @@ public class SignupActivity extends AppCompatActivity {
 
              DatabaseHandler databaseHandler = new DatabaseHandler(SignupActivity.this,url) {
                  @Override
-                 public void getResponse(String response) {
-                     Toast.makeText(SignupActivity.this,response,Toast.LENGTH_SHORT).show();
+                 public void getResponse(String response) throws JSONException {
+                     JSONObject object = new JSONObject(response);
+                     Toast.makeText(SignupActivity.this,object.getString("message"),Toast.LENGTH_SHORT).show();
                  }
              };
 
              databaseHandler.putValues(values);
-
              databaseHandler.execute();
          }
 }

@@ -1,4 +1,4 @@
-package com.example.hackathon;
+package com.example.hackathon.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.hackathon.Init;
+import com.example.hackathon.R;
 import com.example.hackathon.handlers.DatabaseHandler;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -21,7 +23,7 @@ public class SendOtpActivity extends AppCompatActivity {
 
     String email;
 
-    String url = "http://192.168.0.104/hackathon/SendOtp.php";
+    String url = Init.ip +"SendOtp.php";
 
     Intent intent;
 

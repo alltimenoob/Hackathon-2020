@@ -5,6 +5,7 @@ import android.provider.ContactsContract;
 import android.util.Log;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -31,7 +32,7 @@ public abstract class DatabaseHandler {
         this.Url = url;
     }
 
-    public abstract void getResponse(String response) throws JSONException;
+    public abstract void getResponse(String response) throws Exception;
 
     public void putValues(Map<String,String> map){
          this.map = map;
@@ -45,7 +46,7 @@ public abstract class DatabaseHandler {
                     public void onResponse(String response) {
                         try {
                             getResponse(response);
-                        } catch (JSONException e) {
+                        } catch (Exception e) {
                             e.printStackTrace();
                         }
                     }
@@ -61,22 +62,13 @@ public abstract class DatabaseHandler {
             }
         };
 
-        request.setRetryPolicy(new RetryPolicy() {
-            @Override
-            public int getCurrentTimeout() {
-                return 5000;
-            }
+        /* To Prevent Double Post Request */
 
-            @Override
-            public int getCurrentRetryCount() {
-                return 0;
-            }
+        request.setRetryPolicy(new DefaultRetryPolicy(
+                500000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
-            @Override
-            public void retry(VolleyError error) throws VolleyError {
-
-            }
-        });
 
         requestQueue.add(request);
     };
