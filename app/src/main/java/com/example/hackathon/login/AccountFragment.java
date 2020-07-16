@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.hackathon.MainActivity;
 import com.example.hackathon.R;
 
 import java.util.ArrayList;
@@ -19,8 +21,10 @@ import java.util.List;
 
 public class AccountFragment extends Fragment {
 
-    String[] settingList  = {"Your Profile   >","Change Password   >","Log Out   >"};
+    String[] settingList  = {"Your Profile   >","Log Out   >"};
     ListView listView ;
+
+    Intent intent;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -39,15 +43,14 @@ public class AccountFragment extends Fragment {
                 switch (position)
                 {
                     case 0:
-                        Intent intent = new Intent(getContext(),YourProfileActivity.class);
+                        intent = new Intent(getContext(),YourProfileActivity.class);
                         startActivity(intent);
                         break;
                     case 1:
-                        Intent intent2 = new Intent(getContext(),YourProfileActivity.class);
-                        startActivity(intent2);
-                        break;
-                    case 2:
-
+                        SplashActivity.sharedPrefrencesHandler.setLoggedIn(false);
+                        intent = new Intent(getContext(), LoginActivity.class);
+                        startActivity(intent);
+                        getActivity().finish();
                         break;
                 }
 

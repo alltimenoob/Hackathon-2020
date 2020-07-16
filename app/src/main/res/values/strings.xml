@@ -17,6 +17,8 @@
     <string name="signup_button_text_signup">Signup</string>
     <string name="login_link_signup">Already have an account? Login</string>
     <string name="email_hint_signup">Email</string>
+
+    <string name="mobile_hint_signup">Mobile</string>
     <string name="password_hint_signup">Password</string>
     <string name="name_hint_signup">Name</string>
 
