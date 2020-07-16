@@ -1,7 +1,7 @@
 package com.example.hackathon;
 
-import android.app.AppComponentFactory;
 import android.app.Application;
+import android.util.Log;
 
 import com.onesignal.OneSignal;
 
@@ -15,8 +15,10 @@ public class Init extends Application {
         
         OneSignal.startInit(this)
                 .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
-                .unsubscribeWhenNotificationsAreDisabled(true)
+                .unsubscribeWhenNotificationsAreDisabled(false)
                 .init();
+
+        Log.d("INIT", "onCreate: INITIALIZED");
 
     }
 }

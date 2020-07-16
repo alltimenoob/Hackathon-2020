@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentManager;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.hackathon.login.AccountFragment;
 import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -38,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case R.id.account_menu_main:
-
+                        fragment = new AccountFragment();
                         break;
 
                 }

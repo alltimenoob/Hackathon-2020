@@ -13,10 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true"
-        tools:targetApi="m">
-        <activity android:name=".MainActivity"></activity>
-        <activity android:name=".Test" />
+        android:usesCleartextTraffic="true">
+        <activity android:name=".login.YourProfileActivity"></activity>
+        <activity android:name=".MainActivity" />
         <activity android:name=".login.ResetPasswordActivity" />
         <activity android:name=".login.SendOtpActivity" />
         <activity android:name=".login.SignupActivity" />

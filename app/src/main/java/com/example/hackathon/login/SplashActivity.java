@@ -8,7 +8,6 @@ import android.os.Handler;
 
 import com.example.hackathon.MainActivity;
 import com.example.hackathon.R;
-import com.example.hackathon.Test;
 import com.example.hackathon.handlers.SharedPrefrencesHandler;
 
 

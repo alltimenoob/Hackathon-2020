@@ -29,6 +29,8 @@
     <string name="otp_hint_reset">Otp</string>
     <string name="password_hint_reset">New Password</string>
     <string name="reset_password_button_reset">Reset Password</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

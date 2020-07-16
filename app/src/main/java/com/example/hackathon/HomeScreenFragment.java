@@ -28,30 +28,9 @@ public class HomeScreenFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.homescreen_fragment,container,false);
 
-        final WebView w = view.findViewById(R.id.webview);
-
-        w.loadUrl(Init.ip+"1.html");
-
-        Button b = view.findViewById(R.id.webbu);
-
-        b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                createWebPrintJob(w);
-            }
-        });
 
         return view;
     }
 
-    private void createWebPrintJob(WebView webView) {
 
-        PrintManager printManager = (PrintManager) getActivity().getSystemService(Context.PRINT_SERVICE);
-
-        PrintDocumentAdapter printAdapter = webView.createPrintDocumentAdapter();
-
-        String jobName = getString(R.string.app_name) + " Print Test";
-
-        printManager.print(jobName, printAdapter, new PrintAttributes.Builder().build());
-    }
 }

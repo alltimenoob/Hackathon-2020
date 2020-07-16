@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -12,10 +13,10 @@ import android.widget.Toast;
 import com.example.hackathon.Init;
 import com.example.hackathon.MainActivity;
 import com.example.hackathon.R;
-import com.example.hackathon.Test;
 import com.example.hackathon.handlers.DatabaseHandler;
 import com.google.android.material.textfield.TextInputEditText;
-import com.onesignal.OSPermissionSubscriptionState;
+import com.onesignal.OSSubscriptionObserver;
+import com.onesignal.OSSubscriptionStateChanges;
 import com.onesignal.OneSignal;
 
 import org.json.JSONException;
@@ -146,22 +147,35 @@ public class LoginActivity extends AppCompatActivity {
     private void setToken()
     {
 
-        OSPermissionSubscriptionState status = OneSignal.getPermissionSubscriptionState();
-        String userid = status.getSubscriptionStatus().getUserId();
-
-        Map<String ,String> values = new HashMap<>();
-        values.put("email",email);
-        values.put("token",userid);
-
-        DatabaseHandler databaseHandlerIn = new DatabaseHandler(LoginActivity.this,urlIn) {
+        OSSubscriptionObserver subscriptionObserver = new OSSubscriptionObserver() {
             @Override
-            public void getResponse(String response) throws JSONException {
+            public void onOSSubscriptionChanged(OSSubscriptionStateChanges stateChanges) {
+                if (!stateChanges.getFrom().getSubscribed() && stateChanges.getTo().getSubscribed()){
+                    String  userid = stateChanges.getTo().getUserId();
+                    Log.d("TTOOKKEENN", "setToken: "+userid);
+
+                    Map<String ,String> values = new HashMap<>();
+                    values.put("email",email);
+                    values.put("token",userid);
+
+
+
+                    DatabaseHandler databaseHandlerIn = new DatabaseHandler(LoginActivity.this,urlIn) {
+                        @Override
+                        public void getResponse(String response) throws JSONException {
+
+                        }
+                    };
+
+                    databaseHandlerIn.putValues(values);
+                    databaseHandlerIn.execute();
+                }
 
             }
         };
 
-        databaseHandlerIn.putValues(values);
-        databaseHandlerIn.execute();
+        OneSignal.addSubscriptionObserver(subscriptionObserver);
+
 
     }
 
