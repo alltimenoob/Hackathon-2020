@@ -5,10 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.example.hackathon.MainActivity;
 import com.example.hackathon.R;
-
-import org.w3c.dom.Text;
 
 public class YourProfileActivity extends AppCompatActivity {
 
@@ -23,6 +20,6 @@ public class YourProfileActivity extends AppCompatActivity {
 
         name.setText(SplashActivity.sharedPrefrencesHandler.getName());
         email.setText(SplashActivity.sharedPrefrencesHandler.getEmail());
-        accountype.setText("Normal");
+        accountype.setText(SplashActivity.sharedPrefrencesHandler.getType());
     }
 }

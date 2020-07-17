@@ -3,6 +3,8 @@ package com.example.hackathon.handlers;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import java.text.CharacterIterator;
+
 public class SharedPrefrencesHandler {
 
     static SharedPreferences sharedPreferences ;
@@ -12,6 +14,7 @@ public class SharedPrefrencesHandler {
     String email;
     String address;
     String mobile;
+    String city;
 
     String type;
     boolean isLoggedIn;
@@ -23,7 +26,7 @@ public class SharedPrefrencesHandler {
     }
 
     public String getAddress() {
-        return address;
+        return sharedPreferences.getString("address","");
     }
 
     public void setAddress(String address) {
@@ -32,7 +35,7 @@ public class SharedPrefrencesHandler {
     }
 
     public String getMobile() {
-        return mobile;
+        return sharedPreferences.getString("mobile","");
     }
 
     public void setMobile(String mobile) {
@@ -41,7 +44,7 @@ public class SharedPrefrencesHandler {
     }
 
     public String getType() {
-        return type;
+        return sharedPreferences.getString("type","");
     }
 
     public void setType(String type) {
@@ -74,6 +77,15 @@ public class SharedPrefrencesHandler {
 
     public void setLoggedIn(boolean loggedIn) {
         editor.putBoolean("isLoggedIn",loggedIn);
+        editor.commit();
+    }
+
+    public String getCity() {
+        return sharedPreferences.getString("city","");
+    }
+
+    public void setCity(String city) {
+        editor.putString("city", city);
         editor.commit();
     }
 }

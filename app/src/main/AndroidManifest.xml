@@ -14,8 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".login.YourProfileActivity"></activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".donor.DonorActivity"></activity>
+        <activity android:name=".login.YourProfileActivity" />
+        <activity android:name=".ngo.NgoActivity" />
         <activity android:name=".login.ResetPasswordActivity" />
         <activity android:name=".login.SendOtpActivity" />
         <activity android:name=".login.SignupActivity" />

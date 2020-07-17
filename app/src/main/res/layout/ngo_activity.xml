@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".ngo.NgoActivity">
 
     <FrameLayout
         android:id="@+id/container_main"
@@ -17,7 +17,7 @@
         android:id="@+id/bottomnav_main"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        app:menu="@menu/main_menu"
+        app:menu="@menu/ngo_menu"
         android:layout_alignParentBottom="true"
         />
 
