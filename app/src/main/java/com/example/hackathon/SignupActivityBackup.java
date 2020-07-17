@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,8 +23,12 @@ public class SignupActivityBackup extends AppCompatActivity {
     TextInputEditText emailEdit, passwordEdit, nameEdit, mobileEdit, addressEdit;
     Button signupButton;
 
+    RadioGroup radioGroup;
+    RadioButton selected;
+
+
     TextView loginLink;
-    String email, password, name, mobile, address;
+    String email, password, name, mobile, address, type;
 
     String url = "";
 
@@ -38,6 +44,18 @@ public class SignupActivityBackup extends AppCompatActivity {
         nameEdit = findViewById(R.id.name_signup);
         mobileEdit = findViewById(R.id.mobile_signup);
         addressEdit = findViewById(R.id.address_signup);
+
+        radioGroup = findViewById(R.id.user_type_radio_group_Signup);
+
+        type = "NGO";
+
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                selected = findViewById(checkedId);
+                type = selected.getText().toString();
+            }
+        });
 
         signupButton = findViewById(R.id.signup_button_signup);
 
@@ -96,6 +114,8 @@ public class SignupActivityBackup extends AppCompatActivity {
         values.put("password",password);
         values.put("name",name);
         values.put("address",address);
+        values.put("type",type);
+        values.put("mobile",mobile);
 
         DatabaseHandler databaseHandler = new DatabaseHandler(SignupActivityBackup.this,url) {
             @Override
