@@ -46,6 +46,11 @@ public class NgoActivity extends AppCompatActivity {
                     case R.id.image_menu_ngo:
                         fragment = new AddImagesFragment();
                         break;
+
+                    case R.id.report_menu_ngo:
+                        fragment = new ReportFragment();
+                        break;
+
                     case R.id.account_menu_ngo:
                         fragment = new AccountFragment();
                         break;

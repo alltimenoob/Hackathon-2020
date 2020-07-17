@@ -16,6 +16,13 @@
         android:title="Gallery"
         android:icon="@drawable/ic_content"
         />
+
+    <item
+        android:id="@+id/report_menu_ngo"
+        android:title="Report"
+        android:icon="@drawable/ic_request"
+        />
+
     <item
         android:id="@+id/account_menu_ngo"
         android:title="Account"
