@@ -53,6 +53,7 @@
 
         android:text="Karan Raj"
         style="@style/normal_text"/>
+
     <TextView
         android:id="@+id/ngoCityTextView"
 
@@ -65,5 +66,15 @@
 
         android:text="Karan Raj"
         style="@style/normal_text"/>
+
+
+    <Button
+        android:id="@+id/ngoSelectButton"
+        android:layout_margin="5dp"
+        android:layout_alignParentRight="true"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        style="@style/login_button"
+        android:text=">" />
 
 </RelativeLayout>

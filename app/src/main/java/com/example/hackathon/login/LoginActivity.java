@@ -126,9 +126,9 @@ public class LoginActivity extends AppCompatActivity {
                     SplashActivity.sharedPrefrencesHandler.setCity(object.getString("city"));
                     SplashActivity.sharedPrefrencesHandler.setLoggedIn(true);
 
-                    setToken();
-
                     gotoNextActivity(object.getString("type"));
+
+                    setToken();
 
                 }
                 else
