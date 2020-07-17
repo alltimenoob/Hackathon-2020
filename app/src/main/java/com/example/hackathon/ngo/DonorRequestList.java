@@ -14,6 +14,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.hackathon.Init;
 import com.example.hackathon.R;
@@ -130,6 +131,7 @@ public class DonorRequestList extends Fragment {
                     DatabaseHandler databaseHandler = new DatabaseHandler(getContext(),rejecturl) {
                         @Override
                         public void getResponse(String response) throws Exception {
+                            Toast.makeText(getContext(),response,Toast.LENGTH_SHORT).show();
                             requestList.remove(position);
                             customAdapter.notifyDataSetChanged();
                         }

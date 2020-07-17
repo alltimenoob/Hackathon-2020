@@ -9,12 +9,13 @@
         android:layout_height="250dp"
         android:layout_margin="20dp"
         android:src="@drawable/account_menu_icon"
-        android:id="@+id/gallery_list_image"/>
+        android:id="@+id/galleryImageView"/>
 
     <TextView
+        android:id="@+id/dateTextView"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/gallery_list_image"
+        android:layout_below="@id/galleryImageView"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
         android:text="Date"

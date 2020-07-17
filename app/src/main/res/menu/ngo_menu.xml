@@ -14,7 +14,7 @@
     <item
         android:id="@+id/image_menu_ngo"
         android:title="Gallery"
-        android:icon="@drawable/ic_request"
+        android:icon="@drawable/ic_content"
         />
     <item
         android:id="@+id/account_menu_ngo"
