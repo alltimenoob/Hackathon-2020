@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ngo.AcceptRequestActivity"></activity>
+        <activity android:name=".donor.GalleryActivity"></activity>
+        <activity android:name=".ngo.AcceptRequestActivity" />
         <activity android:name=".donor.AddFoodDetails" />
         <activity android:name=".donor.DonorActivity" />
         <activity android:name=".login.YourProfileActivity" />
