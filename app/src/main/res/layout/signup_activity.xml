@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@mipmap/login_background">
+    android:orientation="vertical">
 
     <TextView
         android:layout_width="wrap_content"
@@ -13,8 +12,33 @@
 
         style="@style/title_text"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="30dp"
         />
+
+    <RadioGroup
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="30dp"
+        android:orientation="horizontal"
+        android:id="@+id/user_type_radio_group_Signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:checked="true"
+            android:id="@+id/customer_user_type"
+            android:layout_margin="3dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NGO"/>
+
+        <RadioButton
+            android:id="@+id/doctor_user_type"
+            android:layout_margin="3dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Donor"/>
+
+    </RadioGroup>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/name_layout_signup"
@@ -23,7 +47,7 @@
 
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -57,6 +81,26 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/mobile_layout_signup"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="20dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/mobile_signup"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="number"
+
+            android:hint="@string/mobile_hint_signup"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/password_layout_signup"
         android:layout_width="match_parent"
         android:layout_height="60dp"
@@ -75,6 +119,27 @@
             android:inputType="textPassword"
 
             android:hint="@string/password_hint_signup"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/address_layout_signup"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="20dp"
+        app:passwordToggleEnabled="true"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/address_signup"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="text"
+            android:lines="3"
+            android:hint="Address"
             />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -103,5 +168,6 @@
 
         style="@style/normal_text"
         />
+
 
 </LinearLayout>

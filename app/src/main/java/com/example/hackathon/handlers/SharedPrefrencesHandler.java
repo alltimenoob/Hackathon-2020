@@ -8,13 +8,47 @@ public class SharedPrefrencesHandler {
     static SharedPreferences sharedPreferences ;
     static SharedPreferences.Editor editor;
 
-    String name,email;
+    String name;
+    String email;
+    String address;
+    String mobile;
+
+    String type;
     boolean isLoggedIn;
+
 
     public SharedPrefrencesHandler(Context context) {
         sharedPreferences = context.getSharedPreferences("data",Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
     }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        editor.putString("address",address);
+        editor.commit();
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        editor.putString("mobile",mobile);
+        editor.commit();
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        editor.putString("type",type);
+        editor.commit();
+    }
+
 
     public String getName() {
         return sharedPreferences.getString("name","");

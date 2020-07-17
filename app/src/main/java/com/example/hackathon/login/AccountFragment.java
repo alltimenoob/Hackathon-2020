@@ -50,7 +50,6 @@ public class AccountFragment extends Fragment {
                         SplashActivity.sharedPrefrencesHandler.setLoggedIn(false);
                         intent = new Intent(getContext(), LoginActivity.class);
                         startActivity(intent);
-                        getActivity().finish();
                         break;
                 }
 

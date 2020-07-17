@@ -43,92 +43,17 @@ public class HomeScreenFragment extends Fragment {
     ListView listView;
 
 
-    CustomAdapter customAdapter;
-    List<Item> itemList = new ArrayList<>();
-
     String url = "http://10.0.2.2/UsersList.php";
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.homescreen_fragment,container,false);
+        View view = inflater.inflate(R.layout.homescreen_fragment, container, false);
 
         listView = view.findViewById(R.id.homeListView);
 
-        customAdapter = new CustomAdapter();
-
-        listView.setAdapter(customAdapter);
-
-        databaseOperation();
 
 
         return view;
     }
-
-    private void databaseOperation()
-    {
-        DatabaseHandler databaseHandler = new DatabaseHandler(getContext(),url) {
-            @Override
-            public void getResponse(String response) throws Exception {
-                Log.d("TAG", "getResponse: "+response);
-
-                JSONArray jsonArray = new JSONArray(response);
-
-                for (int i=0; i<jsonArray.length(); i++)
-                {
-                    JSONObject object = jsonArray.getJSONObject(i);
-
-                    itemList.add(new Item(object.getString("itemName"),object.getString("itemEmail"),object.getString("itemImage")));
-                }
-                customAdapter.notifyDataSetChanged();
-            }
-        };
-
-        databaseHandler.execute();
-    }
-
-    public class CustomAdapter extends BaseAdapter
-    {
-
-        @Override
-        public int getCount() {
-            return itemList.size();
-        }
-
-        @Override
-        public Object getItem(int position) {
-            return null;
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return 0;
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            convertView = getLayoutInflater().inflate(R.layout.list_item_homescreen,parent,false);
-
-            TextView itemName = convertView.findViewById(R.id.itemNameTextView);
-            TextView itemEmail = convertView.findViewById(R.id.itemEmailTextView);
-            ImageView itemImage = convertView.findViewById(R.id.itemImageView);
-
-            itemName.setText(itemList.get(position).getItemName());
-            itemEmail.setText(itemList.get(position).getItemEmail());
-
-            Bitmap bitmap = getImage(itemList.get(position).getItemProfile());
-            itemImage.setImageBitmap(bitmap);
-
-            return convertView;
-        }
-
-        private Bitmap getImage(String imagebase4) {
-            byte[] imagedecoded = Base64.decode(imagebase4, Base64.DEFAULT);
-            Bitmap decodedimage = BitmapFactory.decodeByteArray(imagedecoded, 0, imagedecoded.length);
-            return decodedimage;
-
-        }
-    }
-
-
 }

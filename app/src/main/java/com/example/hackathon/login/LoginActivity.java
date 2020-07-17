@@ -119,6 +119,9 @@ public class LoginActivity extends AppCompatActivity {
 
                     SplashActivity.sharedPrefrencesHandler.setEmail(email);
                     SplashActivity.sharedPrefrencesHandler.setName(object.getString("name"));
+                    SplashActivity.sharedPrefrencesHandler.setName(object.getString("mobile"));
+                    SplashActivity.sharedPrefrencesHandler.setName(object.getString("address"));
+                    SplashActivity.sharedPrefrencesHandler.setName(object.getString("type"));
                     SplashActivity.sharedPrefrencesHandler.setLoggedIn(true);
 
                     setToken();
