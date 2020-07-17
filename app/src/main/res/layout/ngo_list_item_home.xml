@@ -69,12 +69,24 @@
 
 
     <Button
+        android:layout_below="@id/ngoCityTextView"
         android:id="@+id/ngoSelectButton"
-        android:layout_margin="5dp"
-        android:layout_alignParentRight="true"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_margin="15dp"
+        android:layout_alignParentLeft="true"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
         style="@style/login_button"
-        android:text=">" />
+        android:text="Request" />
+
+    <Button
+        android:layout_below="@id/ngoCityTextView"
+        android:id="@+id/ngoGalleryButton"
+        android:layout_margin="15dp"
+        android:layout_alignParentRight="true"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        style="@style/login_button"
+        android:text="Gallery" />
+
 
 </RelativeLayout>

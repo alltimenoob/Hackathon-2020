@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,7 +56,13 @@ public class AddImagesFragment extends Fragment {
                 startActivityForResult(chooser,1);
 
                 upload.setVisibility(View.VISIBLE);
-                
+
+            }
+        });
+
+        upload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 databaseOperation();
             }
         });
@@ -75,6 +82,7 @@ public class AddImagesFragment extends Fragment {
                 Toast.makeText(getContext(),response,Toast.LENGTH_SHORT).show();
 
                 upload.setVisibility(View.INVISIBLE);
+                imageView.setImageDrawable(getResources().getDrawable(R.drawable.home_menu_icon));
             }
         };
 
@@ -92,7 +100,6 @@ public class AddImagesFragment extends Fragment {
 
                 imageView.setImageURI(uri);
 
-
                 BitmapDrawable drawable = (BitmapDrawable) imageView.getDrawable();
 
                 Bitmap image = drawable.getBitmap();
@@ -105,6 +112,8 @@ public class AddImagesFragment extends Fragment {
                 byte[] arry = outputStream.toByteArray();
 
                 encoded = Base64.encodeToString(arry, 0, arry.length, Base64.DEFAULT);
+
+                Log.d("TAG", "onActivityResult: "+encoded);
 
             }
         }

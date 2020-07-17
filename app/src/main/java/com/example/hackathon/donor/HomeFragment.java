@@ -113,6 +113,7 @@ public class HomeFragment extends Fragment {
             TextView itemMobile = convertView.findViewById(R.id.ngoMobileTextView);
             TextView itemCity = convertView.findViewById(R.id.ngoCityTextView);
             Button select = convertView.findViewById(R.id.ngoSelectButton);
+            Button gallery = convertView.findViewById(R.id.ngoGalleryButton);
 
 
             itemName.setText(new StringBuilder("Name :").append(ngoList.get(position).getNgoName()));
@@ -124,8 +125,16 @@ public class HomeFragment extends Fragment {
             select.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
                     Intent intent = new Intent(getContext(),AddFoodDetails.class);
+                    intent.putExtra("email",ngoList.get(position).getNgoEmail());
+                    startActivity(intent);
+                }
+            });
+
+            gallery.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getContext(),GalleryActivity.class);
                     intent.putExtra("email",ngoList.get(position).getNgoEmail());
                     startActivity(intent);
                 }
