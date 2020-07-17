@@ -17,6 +17,9 @@ import com.example.hackathon.handlers.DatabaseHandler;
 import com.example.hackathon.login.LoginActivity;
 import com.google.android.material.textfield.TextInputEditText;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -121,8 +124,8 @@ public class SignupActivity extends AppCompatActivity {
 
         DatabaseHandler databaseHandler = new DatabaseHandler(SignupActivity.this,url) {
             @Override
-            public void getResponse(String response) {
-                Toast.makeText(SignupActivity.this,response,Toast.LENGTH_SHORT).show();
+            public void getResponse(String response) throws Exception {
+                Toast.makeText(SignupActivity.this,new JSONObject(response).getString("message"),Toast.LENGTH_SHORT).show();
             }
         };
 
