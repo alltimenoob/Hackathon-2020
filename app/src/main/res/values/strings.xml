@@ -2,7 +2,7 @@
     <string name="app_name">Hackathon</string>
 
     <!--    Splash Screen Text-->
-    <string name="splash_text">Tracking\nSystem</string>
+    <string name="splash_text">Extra Food\nManagement</string>
 
     <!--    Login Screen-->
     <string name="email_hint_login">Email</string>

@@ -8,12 +8,11 @@
     tools:context=".login.SplashActivity">
 
     <TextView
+        android:layout_centerInParent="true"
         android:id="@+id/testtitle"
+        style="@style/splash_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="@string/splash_text"
-        style="@style/splash_text"
-     />
+        android:text="@string/splash_text" />
 
 </RelativeLayout>
