@@ -1,4 +1,4 @@
-package com.example.hackathon;
+package com.example.hackathon.donor;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,11 +8,11 @@ import androidx.fragment.app.FragmentManager;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.hackathon.R;
 import com.example.hackathon.login.AccountFragment;
-import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity extends AppCompatActivity {
+public class DonorActivity extends AppCompatActivity {
 
     public static FragmentManager fragmentManager;
     public static BottomNavigationView bottom;
@@ -21,29 +21,30 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main_activity);
+        setContentView(R.layout.donor_activity);
 
         fragmentManager = getSupportFragmentManager();
-        bottom = findViewById(R.id.bottomnav_main);
+        bottom = findViewById(R.id.donor_bottomNav);
 
-        bottom.setSelectedItemId(R.id.home_menu_main);
-        fragmentManager.beginTransaction().add(R.id.container_main,new HomeScreenFragment(),null).commit();
+        bottom.setSelectedItemId(R.id.home_menu_donor);
+        fragmentManager.beginTransaction().add(R.id.donor_container,new HomeFragment(),null).commit();
+
         bottom.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
                 switch (menuItem.getItemId())
                 {
-                    case R.id.home_menu_main :
-                        fragment = new HomeScreenFragment();
+                    case R.id.home_menu_donor :
+                        fragment = new HomeFragment();
                         break;
 
-                    case R.id.account_menu_main:
+                    case R.id.account_menu_donor:
                         fragment = new AccountFragment();
                         break;
 
                 }
-                fragmentManager.beginTransaction().replace(R.id.container_main,fragment,null).commit();
+                fragmentManager.beginTransaction().replace(R.id.donor_container,fragment,null).commit();
                 return true;
             }
         });

@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-import com.example.hackathon.MainActivity;
+import com.example.hackathon.ngo.NgoActivity;
 import com.example.hackathon.R;
 import com.example.hackathon.handlers.SharedPrefrencesHandler;
 
@@ -36,7 +36,7 @@ public class SplashActivity extends AppCompatActivity {
     {
         if(sharedPrefrencesHandler.isLoggedIn())
         {
-            intent = new Intent(this, MainActivity.class);
+            intent = new Intent(this, NgoActivity.class);
             startActivity(intent);
             finish();
         }

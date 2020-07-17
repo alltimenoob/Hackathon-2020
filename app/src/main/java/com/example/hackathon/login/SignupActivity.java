@@ -25,7 +25,7 @@ import java.util.Map;
 
 public class SignupActivity extends AppCompatActivity {
 
-    TextInputEditText emailEdit, passwordEdit, nameEdit, mobileEdit, addressEdit;
+    TextInputEditText emailEdit, passwordEdit, nameEdit, mobileEdit, addressEdit,cityEdit;
     Button signupButton;
 
     RadioGroup radioGroup;
@@ -33,7 +33,7 @@ public class SignupActivity extends AppCompatActivity {
 
 
     TextView loginLink;
-    String email, password, name, mobile, address, type;
+    String email, password, name, mobile, address, type,city;
 
     String url = Init.ip+"Signup.php";
 
@@ -49,6 +49,7 @@ public class SignupActivity extends AppCompatActivity {
         nameEdit = findViewById(R.id.name_signup);
         mobileEdit = findViewById(R.id.mobile_signup);
         addressEdit = findViewById(R.id.address_signup);
+        cityEdit = findViewById(R.id.city_signup);
 
         radioGroup = findViewById(R.id.user_type_radio_group_Signup);
 
@@ -95,11 +96,11 @@ public class SignupActivity extends AppCompatActivity {
         name = nameEdit.getText().toString();
         mobile = mobileEdit.getText().toString();
         address = addressEdit.getText().toString();
+        city = cityEdit.getText().toString();
 
-        if (email.isEmpty() || password.isEmpty() || name.isEmpty() || mobile.isEmpty() || address.isEmpty() )
+        if (email.isEmpty() || password.isEmpty() || name.isEmpty() || mobile.isEmpty() || address.isEmpty() || city.isEmpty())
         {
             Toast.makeText(this,"Please Provide All Details !",Toast.LENGTH_SHORT).show();
-
         }
         else if (password.length() < 8)
         {
@@ -120,6 +121,7 @@ public class SignupActivity extends AppCompatActivity {
         values.put("name",name);
         values.put("address",address);
         values.put("type",type);
+        values.put("city",city);
         values.put("mobile",mobile);
 
         DatabaseHandler databaseHandler = new DatabaseHandler(SignupActivity.this,url) {

@@ -11,8 +11,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.hackathon.Init;
-import com.example.hackathon.MainActivity;
+import com.example.hackathon.ngo.NgoActivity;
 import com.example.hackathon.R;
+import com.example.hackathon.donor.DonorActivity;
 import com.example.hackathon.handlers.DatabaseHandler;
 import com.google.android.material.textfield.TextInputEditText;
 import com.onesignal.OSSubscriptionObserver;
@@ -119,14 +120,15 @@ public class LoginActivity extends AppCompatActivity {
 
                     SplashActivity.sharedPrefrencesHandler.setEmail(email);
                     SplashActivity.sharedPrefrencesHandler.setName(object.getString("name"));
-                    SplashActivity.sharedPrefrencesHandler.setName(object.getString("mobile"));
-                    SplashActivity.sharedPrefrencesHandler.setName(object.getString("address"));
-                    SplashActivity.sharedPrefrencesHandler.setName(object.getString("type"));
+                    SplashActivity.sharedPrefrencesHandler.setMobile(object.getString("mobile"));
+                    SplashActivity.sharedPrefrencesHandler.setAddress(object.getString("address"));
+                    SplashActivity.sharedPrefrencesHandler.setType(object.getString("type"));
+                    SplashActivity.sharedPrefrencesHandler.setCity(object.getString("city"));
                     SplashActivity.sharedPrefrencesHandler.setLoggedIn(true);
 
                     setToken();
 
-                    gotoNextActivity();
+                    gotoNextActivity(object.getString("type"));
 
                 }
                 else
@@ -141,10 +143,19 @@ public class LoginActivity extends AppCompatActivity {
         databaseHandler.execute();
     }
 
-    private void gotoNextActivity() {
-        intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-        finish();
+    private void gotoNextActivity(String type) {
+        if(type.equals("NGO"))
+        {
+            intent = new Intent(this, NgoActivity.class);
+            startActivity(intent);
+            finish();
+        }
+        else if(type.equals("Donor"))
+        {
+            intent = new Intent(this, DonorActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
     private void setToken()

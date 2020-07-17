@@ -1,4 +1,4 @@
-package com.example.hackathon;
+package com.example.hackathon.donor;
 
 import android.os.Bundle;
 
@@ -14,6 +14,8 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.hackathon.Init;
+import com.example.hackathon.R;
 import com.example.hackathon.data.NGOData;
 import com.example.hackathon.handlers.DatabaseHandler;
 import com.example.hackathon.login.SplashActivity;
@@ -21,6 +23,7 @@ import com.example.hackathon.login.SplashActivity;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,7 +34,7 @@ public class HomeFragment extends Fragment {
     List<NGOData> ngoList;
     CustomAdapter customAdapter;
 
-    String url =Init.ip+"NgoList.php";
+    String url = Init.ip+"NgoList.php";
 
     @Nullable
     @Override
@@ -42,6 +45,8 @@ public class HomeFragment extends Fragment {
         listView = view.findViewById(R.id.ngoListView);
 
         customAdapter = new CustomAdapter();
+
+        ngoList = new ArrayList<>();
 
         listView.setAdapter(customAdapter);
 
@@ -72,7 +77,7 @@ public class HomeFragment extends Fragment {
         };
 
         Map<String,String> map = new HashMap<>();
-//        map.put("city", SplashActivity.sharedPrefrencesHandler.getCity());
+        map.put("city", SplashActivity.sharedPrefrencesHandler.getCity());
 
         databaseHandler.putValues(map);
 
@@ -108,12 +113,11 @@ public class HomeFragment extends Fragment {
             TextView itemCity = convertView.findViewById(R.id.ngoCityTextView);
 
 
-
-            itemName.setText(ngoList.get(position).getNgoName());
-            itemEmail.setText(ngoList.get(position).getNgoEmail());
-            itemMobile.setText(ngoList.get(position).getNgoMobile());
-            itemAddress.setText(ngoList.get(position).getNgoAddress());
-            itemCity.setText(ngoList.get(position).getNgoCity());
+            itemName.setText(new StringBuilder("Name :").append(ngoList.get(position).getNgoName()));
+            itemEmail.setText(new StringBuilder("Email :").append(ngoList.get(position).getNgoEmail()));
+            itemMobile.setText(new StringBuilder("Mobile :").append(ngoList.get(position).getNgoMobile()));
+            itemAddress.setText(new StringBuilder("Address :").append(ngoList.get(position).getNgoAddress()));
+            itemCity.setText(new StringBuilder("City :").append(ngoList.get(position).getNgoCity()));
 
             return convertView;
         }
