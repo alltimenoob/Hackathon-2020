@@ -2,7 +2,21 @@ package com.example.hackathon.data;
 
 public class NGOData {
 
-    String ngoName, ngoEmail, ngoMobile, ngoAddress;
+    String ngoName;
+    String ngoEmail;
+    String ngoMobile;
+    String ngoAddress;
+
+    public String getNgoCity() {
+        return ngoCity;
+    }
+
+    public NGOData setNgoCity(String ngoCity) {
+        this.ngoCity = ngoCity;
+        return this;
+    }
+
+    String ngoCity;
 
     public String getNgoName() {
         return ngoName;
@@ -40,10 +54,11 @@ public class NGOData {
         return this;
     }
 
-    public NGOData(String ngoName, String ngoEmail, String ngoMobile, String ngoAddress) {
+    public NGOData(String ngoName, String ngoEmail, String ngoMobile, String ngoAddress, String ngoCity) {
         this.ngoName = ngoName;
         this.ngoEmail = ngoEmail;
         this.ngoMobile = ngoMobile;
         this.ngoAddress = ngoAddress;
+        this.ngoCity = ngoCity;
     }
 }
