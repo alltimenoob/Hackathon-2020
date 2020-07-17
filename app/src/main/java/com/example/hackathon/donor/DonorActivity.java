@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.hackathon.R;
+import com.example.hackathon.data.MyRequestData;
 import com.example.hackathon.login.AccountFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -37,6 +38,10 @@ public class DonorActivity extends AppCompatActivity {
                 {
                     case R.id.home_menu_donor :
                         fragment = new HomeFragment();
+                        break;
+
+                    case R.id.request_menu_donor:
+                        fragment = new RequestList();
                         break;
 
                     case R.id.account_menu_donor:

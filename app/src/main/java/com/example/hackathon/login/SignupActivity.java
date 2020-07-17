@@ -78,10 +78,14 @@ public class SignupActivity extends AppCompatActivity {
         signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 signupOperation();
             }
         });
+    }
+    private void gotoOtp() {
+        intent = new Intent(this,SendOtpSignupActivity.class);
+        intent.putExtra("email",email);
+        startActivity(intent);
     }
 
     private void gotoLogin() {
@@ -109,7 +113,7 @@ public class SignupActivity extends AppCompatActivity {
         else
         {
             databaseOperation();
-            gotoLogin();
+            gotoOtp();
         }
     }
 

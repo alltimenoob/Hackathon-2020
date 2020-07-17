@@ -35,7 +35,7 @@ public class DonorRequestList extends Fragment {
     List<RequestData> requestList;
     CustomAdapter customAdapter;
 
-    String url = Init.ip+"RequestDetails.php";
+    String url = Init.ip+"RequestListNgo.php";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {

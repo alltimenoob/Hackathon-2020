@@ -12,6 +12,11 @@
         android:icon="@drawable/ic_request"
         />
     <item
+        android:id="@+id/image_menu_ngo"
+        android:title="Gallery"
+        android:icon="@drawable/ic_request"
+        />
+    <item
         android:id="@+id/account_menu_ngo"
         android:title="Account"
         android:icon="@drawable/account_menu_icon"
