@@ -69,4 +69,26 @@
 
     />
 
+
+    <Button
+        android:layout_alignParentRight="true"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:id="@+id/donoraccept"
+        android:text="✓"
+        style="@style/login_button"
+        android:background="#00AA00"
+        />
+
+    <Button
+        android:layout_alignRight="@id/donoraccept"
+        android:id="@+id/donorreject"
+        android:text="✖"
+        style="@style/login_button"
+        android:background="#AA0000"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="59dp" />
+
 </RelativeLayout>

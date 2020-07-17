@@ -2,7 +2,7 @@ package com.example.hackathon.data;
 
 public class RequestData {
 
-    String donorName, donorMobile, donorAddress, donorCity, donorFoodDetails;
+    String rno,donorName, donorMobile, donorAddress, donorCity, donorFoodDetails;
 
     public String getDonorName() {
         return donorName;
@@ -49,7 +49,17 @@ public class RequestData {
         return this;
     }
 
-    public RequestData(String donorName, String donorMobile, String donorAddress, String donorCity, String donorFoodDetails) {
+    public String getRno() {
+        return rno;
+    }
+
+    public RequestData setRno(String rno) {
+        this.rno = rno;
+        return this;
+    }
+
+    public RequestData(String rno,String donorName, String donorMobile, String donorAddress, String donorCity, String donorFoodDetails) {
+        this.rno = rno;
         this.donorName = donorName;
         this.donorMobile = donorMobile;
         this.donorAddress = donorAddress;
