@@ -39,6 +39,10 @@ public class NgoActivity extends AppCompatActivity {
                         fragment = new AddNeedyPerson();
                         break;
 
+                    case R.id.request_menu_ngo:
+                        fragment = new DonorRequestList();
+                        break;
+
                     case R.id.account_menu_ngo:
                         fragment = new AccountFragment();
                         break;

@@ -55,7 +55,6 @@ public class HomeFragment extends Fragment {
         databaseOperation();
 
 
-
         return view;
     }
 
