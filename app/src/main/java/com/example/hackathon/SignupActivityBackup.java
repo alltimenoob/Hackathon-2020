@@ -18,11 +18,11 @@ import java.util.Map;
 
 public class SignupActivityBackup extends AppCompatActivity {
 
-    TextInputEditText emailEdit, passwordEdit, nameEdit, mobileEdit;
+    TextInputEditText emailEdit, passwordEdit, nameEdit, mobileEdit, addressEdit;
     Button signupButton;
 
     TextView loginLink;
-    String email, password, name, mobile;
+    String email, password, name, mobile, address;
 
     String url = "";
 
@@ -37,6 +37,7 @@ public class SignupActivityBackup extends AppCompatActivity {
         passwordEdit = findViewById(R.id.password_signup);
         nameEdit = findViewById(R.id.name_signup);
         mobileEdit = findViewById(R.id.mobile_signup);
+        addressEdit = findViewById(R.id.address_signup);
 
         signupButton = findViewById(R.id.signup_button_signup);
 
@@ -70,8 +71,9 @@ public class SignupActivityBackup extends AppCompatActivity {
         password = passwordEdit.getText().toString();
         name = nameEdit.getText().toString();
         mobile = mobileEdit.getText().toString();
+        address = addressEdit.getText().toString();
 
-        if (email.isEmpty() || password.isEmpty() || name.isEmpty() || mobile.isEmpty() )
+        if (email.isEmpty() || password.isEmpty() || name.isEmpty() || mobile.isEmpty() || address.isEmpty() )
         {
             Toast.makeText(this,"Please Provide All Details !",Toast.LENGTH_SHORT).show();
 
@@ -93,6 +95,7 @@ public class SignupActivityBackup extends AppCompatActivity {
         values.put("email",email);
         values.put("password",password);
         values.put("name",name);
+        values.put("address",address);
 
         DatabaseHandler databaseHandler = new DatabaseHandler(SignupActivityBackup.this,url) {
             @Override
