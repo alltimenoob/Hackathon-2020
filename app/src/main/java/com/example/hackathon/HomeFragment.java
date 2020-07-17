@@ -65,7 +65,7 @@ public class HomeFragment extends Fragment {
                 {
                     JSONObject object = jsonArray.getJSONObject(i);
 
-                    ngoList.add(new NGOData(object.getString("ngoName"),object.getString("ngoEmail"),object.getString("ngoMobile"),object.getString("ngoAddress")));
+                    ngoList.add(new NGOData(object.getString("ngoName"),object.getString("ngoEmail"),object.getString("ngoMobile"),object.getString("ngoAddress"),object.getString("ngoCity")));
                 }
                 customAdapter.notifyDataSetChanged();
             }
@@ -105,12 +105,15 @@ public class HomeFragment extends Fragment {
             TextView itemEmail = convertView.findViewById(R.id.ngoEmailTextView);
             TextView itemAddress = convertView.findViewById(R.id.ngoAddressTextView);
             TextView itemMobile = convertView.findViewById(R.id.ngoMobileTextView);
+            TextView itemCity = convertView.findViewById(R.id.ngoCityTextView);
+
 
 
             itemName.setText(ngoList.get(position).getNgoName());
             itemEmail.setText(ngoList.get(position).getNgoEmail());
             itemMobile.setText(ngoList.get(position).getNgoMobile());
             itemAddress.setText(ngoList.get(position).getNgoAddress());
+            itemCity.setText(ngoList.get(position).getNgoCity());
 
             return convertView;
         }
