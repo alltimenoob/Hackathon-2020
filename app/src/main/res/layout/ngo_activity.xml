@@ -7,14 +7,14 @@
     tools:context=".ngo.NgoActivity">
 
     <FrameLayout
-        android:id="@+id/container_main"
+        android:id="@+id/container_ngo"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="60dp">
     </FrameLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomnav_main"
+        android:id="@+id/bottomnav_ngo"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         app:menu="@menu/ngo_menu"

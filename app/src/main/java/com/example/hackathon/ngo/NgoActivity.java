@@ -25,10 +25,10 @@ public class NgoActivity extends AppCompatActivity {
         setContentView(R.layout.ngo_activity);
 
         fragmentManager = getSupportFragmentManager();
-        bottom = findViewById(R.id.bottomnav_main);
+        bottom = findViewById(R.id.bottomnav_ngo);
 
         bottom.setSelectedItemId(R.id.home_menu_ngo);
-        fragmentManager.beginTransaction().add(R.id.container_main,new HomeFragment(),null).commit();
+        fragmentManager.beginTransaction().add(R.id.container_ngo,new AddNeedyPerson(),null).commit();
         bottom.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -36,7 +36,7 @@ public class NgoActivity extends AppCompatActivity {
                 switch (menuItem.getItemId())
                 {
                     case R.id.home_menu_ngo :
-                        fragment = new HomeFragment();
+                        fragment = new AddNeedyPerson();
                         break;
 
                     case R.id.account_menu_ngo:
@@ -44,7 +44,7 @@ public class NgoActivity extends AppCompatActivity {
                         break;
 
                 }
-                fragmentManager.beginTransaction().replace(R.id.container_main,fragment,null).commit();
+                fragmentManager.beginTransaction().replace(R.id.container_ngo,fragment,null).commit();
                 return true;
             }
         });
