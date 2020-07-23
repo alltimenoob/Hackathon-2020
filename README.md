@@ -8,4 +8,6 @@
 
 - Organizer : BBIT,VV-Nagar
 
+- Tools : Android Studio,PHP,MYSQL,NOTEPAD++
+
 ## We won that hackathon , 2nd Prize xD <3 <3
