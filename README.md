@@ -1,9 +1,11 @@
 # Hackathon
 
-Problem Statement : Extra Food Management System
+- Problem Statement : Extra Food Management System
 
-Team : alltimenoob,Dev-karanraj
+- Team : alltimenoob,Dev-karanraj
 
-Android Application
+- Android Application
 
-We won that hackathon
+- Organizer : BBIT,VV-Nagar
+
+## We won that hackathon , 2nd Prize xD <3 <3
